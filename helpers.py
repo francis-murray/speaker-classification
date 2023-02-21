@@ -31,7 +31,7 @@ def extract_mfcc_features(speaker_id, numcep, speaker_folder):
         with open(path, 'rb') as f:
             data, samplerate = sf.read(f)
 
-            # extract MFCC features for the current audio file
+        # extract MFCC features for the current audio file
         mfcc_features = mfcc(data, samplerate, numcep=numcep, nfilt=numcep)
 
         # average the MFCC features for the current audio file
@@ -123,8 +123,8 @@ def show_hist_box(data, attr_list, title, img_path, do_save_to_disk, num_plots):
         img_path: the path to save the plot
         do_save_to_disk: boolean, whether to save the plot to disk
     """
-    fig = plt.figure(figsize=(18, 30))
-    outer = gridspec.GridSpec(math.ceil(num_plots / 3), 3, wspace=0.2, hspace=0.5, top=0.950, bottom=0.03)
+    fig = plt.figure(figsize=(18, 12))
+    outer = gridspec.GridSpec(math.ceil(num_plots / 3), 3, wspace=0.2, hspace=0.5, top=0.930, bottom=0.03)
 
     for i, attribute in enumerate(attr_list):
         inner = gridspec.GridSpecFromSubplotSpec(
@@ -151,7 +151,7 @@ def show_hist_box(data, attr_list, title, img_path, do_save_to_disk, num_plots):
         ax1.set_xlabel(f"{attr_list[i]}")
 
     # Set title
-    fig.suptitle(f"{title}\n({len(data):,} frames)", fontweight="bold")
+    fig.suptitle(f"{title}\n({len(data):,} audio files)", fontweight="bold")
 
     # Save to disk
     if do_save_to_disk == True:
